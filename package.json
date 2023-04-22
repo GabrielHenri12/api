@@ -1,8 +1,10 @@
 {
-  "name": "nodejs_pizzaria",
+  "name": "api",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/server.js",
@@ -11,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GabrielHenri12/nodeJs_pizzaria.git"
+    "url": "git+https://github.com/GabrielHenri12/api.git"
   },
   "author": "Gabriel Henrique",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/GabrielHenri12/nodeJs_pizzaria/issues"
+    "url": "https://github.com/GabrielHenri12/api/issues"
   },
-  "homepage": "https://github.com/GabrielHenri12/nodeJs_pizzaria#readme",
+  "homepage": "https://github.com/GabrielHenri12/api#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
