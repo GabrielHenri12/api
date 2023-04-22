@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { privateRouts } from "../middlewares/Auth";
 import * as pizzaController from "../controllers/ProdutoController";
 import * as cartController from "../controllers/cartController";
@@ -8,6 +8,7 @@ import * as ValidatorsCart from "../middlewares/ValidatorsCart"
 
 const router = Router();
 
+router.get('/', (req: Request, res: Response) => { res.json({ Ok: "Aplicação Online" }) })
 router.get('/produtos', pizzaController.Consulte);
 router.get('/produto/:id/', pizzaController.ConsultePorID);
 router.get('/carrinho/', privateRouts, cartController.FindAllCarts);
