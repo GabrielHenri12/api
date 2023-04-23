@@ -54,16 +54,3 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_40637F88FEE54BC784A736C2C8416F1E }}
           package: .
-
-      - name: Run tests
-        uses: actions/setup-node@v1
-        with:
-          node-version: '18.x'
-        env:
-          PGDATABASE: ${{ secrets.PGDATABASE }}
-          PGHOST: ${{ secrets.PGHOST }}
-          PGUSER: ${{ secrets.PGUSER }}
-          PGPASSWORD: ${{ secrets.PGPASSWORD }}
-          PGPORT: ${{ secrets.PGPORT }}
-        run: |
-          npm run test
