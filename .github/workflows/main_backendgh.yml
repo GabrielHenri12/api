@@ -21,13 +21,6 @@ jobs:
         with:
           node-version: '18.x'
       
-      - name: Set up Azure environment variables
-        env:
-          APP_CONFIG: ${{ secrets.APP_CONFIG }}
-        run: |
-          for /f "delims=" %%x in ('echo %APP_CONFIG%') do set "configFile=%%x"
-          for /f "tokens=1,* delims==" %%x in ('type "%configFile%" ^| findstr "="') do (setx /m %%x %%y)
-      
       - name: npm install, build, and test
         run: |
           npm install
@@ -61,3 +54,16 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_40637F88FEE54BC784A736C2C8416F1E }}
           package: .
+
+      - name: Run tests
+        uses: actions/setup-node@v1
+        with:
+          node-version: '18.x'
+        env:
+          PGDATABASE: ${{ secrets.PGDATABASE }}
+          PGHOST: ${{ secrets.PGHOST }}
+          PGUSER: ${{ secrets.PGUSER }}
+          PGPASSWORD: ${{ secrets.PGPASSWORD }}
+          PGPORT: ${{ secrets.PGPORT }}
+        run: |
+          npm run test
