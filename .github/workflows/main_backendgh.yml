@@ -22,8 +22,7 @@ jobs:
           node-version: '18.x'
       
       - name: npm install, build, and test
-        env:
-          ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_40637F88FEE54BC784A736C2C8416F1E }}
+        env: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_40637F88FEE54BC784A736C2C8416F1E }}
         run: |
           npm install
           npm run build --if-present
