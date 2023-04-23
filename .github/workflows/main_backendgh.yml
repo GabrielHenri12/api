@@ -20,7 +20,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '18.x'
-
+      
+      - name: Set up Azure environment variables
+        env:
+          APP_CONFIG: ${{ secrets.APP_CONFIG }}
+        run: |
+          for /f "delims=" %%x in ('echo %APP_CONFIG%') do set "configFile=%%x"
+          for /f "tokens=1,* delims==" %%x in ('type "%configFile%" ^| findstr "="') do (
+            setx /m %%x %%y
+          )
+      
       - name: npm install, build, and test
         run: |
           npm install
