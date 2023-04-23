@@ -9,6 +9,12 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  AZURE_WEBAPP_NAME: my-node-app
+  AZURE_WEBAPP_PACKAGE_PATH: '.' 
+  # Replace with your Azure service connection name, or set up a new one
+  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_40637F88FEE54BC784A736C2C8416F1E }}
+
 jobs:
   build:
     runs-on: windows-latest
