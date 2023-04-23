@@ -26,9 +26,7 @@ jobs:
           APP_CONFIG: ${{ secrets.APP_CONFIG }}
         run: |
           for /f "delims=" %%x in ('echo %APP_CONFIG%') do set "configFile=%%x"
-          for /f "tokens=1,* delims==" %%x in ('type "%configFile%" ^| findstr "="') do (
-            setx /m %%x %%y
-          )
+          for /f "tokens=1,* delims==" %%x in ('type "%configFile%" ^| findstr "="') do (setx /m %%x %%y)
       
       - name: npm install, build, and test
         run: |
