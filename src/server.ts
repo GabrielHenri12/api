@@ -39,4 +39,6 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next)=>{
 
 server.use(errorHandler)
 
-server.listen(process.env.PORT || '3000');
+const port = process.env.PORT || 8080
+
+server.listen(port);
